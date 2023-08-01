@@ -22,17 +22,19 @@ const WelcomeCarsoule = () => {
             background-position: center;
             background-size: 40px;
             background-repeat: no-repeat;
-            padding: 8px 16px;
-            border-radius: 5px;
+            padding: 4px 12px;
+            border-radius: 999px;
             background-color:gray;
           }
 
           .swiper-button-prev {
             background-image: url("/arrow-left.svg");
+            background-size: 30px 30px;
           }
 
           .swiper-button-next {
             background-image: url("/arrow-right.svg");
+            background-size: 30px 30px;
           }
           
           .swiper-button-next::after,
@@ -68,10 +70,10 @@ const WelcomeCarsoule = () => {
    
 
       <swiper-container init="false" ref={trendingRef} >
-        <swiper-slide ><div className='h-72 md:h-80 lg:h-96 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-1</div></swiper-slide>
-        <swiper-slide ><div className='h-72 md:h-80 lg:h-96 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-2</div></swiper-slide>
-        <swiper-slide ><div className='h-72 md:h-80 lg:h-96 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-3</div></swiper-slide>
-        <swiper-slide ><div className='h-72 md:h-80 lg:h-96 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-4</div></swiper-slide>
+        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-1</div></swiper-slide>
+        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-2</div></swiper-slide>
+        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-3</div></swiper-slide>
+        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-4</div></swiper-slide>
    
       </swiper-container>
    

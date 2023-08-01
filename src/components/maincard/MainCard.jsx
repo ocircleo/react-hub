@@ -4,31 +4,32 @@ import { BsFillCartFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
-const MainCard = () => {
+const MainCard = ({ data }) => {
+    const { name, ratings, price, seller, img
+    } = data
     return (
         <Link>
-            <div className="flex flex-col gap-5 w-56 bg-base-100  relative rounded-lg flex-shrink-0 pb-5 border">
-                <div className='h-44 bg-gray-200 z-10  w-full object-cover rounded-lg absolute top-2'></div>
-                <figure className='h-44 bg-white  w-full object-cover z-20 rounded-lg'><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                <div className=" flex flex-col items-center gap-2">
-                    <div className=''>  <Rating
-                        style={{ maxWidth: 90 }}
-                        value={3}
-                        readOnly
-                    /></div>
-                    <div className='flex flex-col capitalize text-sm font-semibold px-1'>
-                        <div>
-                            <h3 title='product name' className='text-gray-600'>samsung galaxy a10s</h3>
+            <div className="flex flex-col gap-2 w-60 h-80 relative flex-shrink-0 pb-2">
+                <figure className='h-44 bg-slate-100 w-full object-cover z-20 rounded-lg'><img src={img} alt="Shoes" className='h-44 w-full object-cover rounded' /></figure>
+                <div className="flex flex-col justify-between items-start w-full gap-1 p-2 h-36">
+                    <div className='w-full'>
+                        <div className='flex justify-between items-center capitalize font-semibold text-sm px-1 w-full '>
+                            <h3 title='product name' >{name.length > 25 ? name.slice(0, 18) + "..." : name}</h3>
+                            <p title='price' className='text-center text-gray-600'>${price}</p>
                         </div>
-                        <p title='price' className='text-center text-gray-600'>$30</p>
+                        <div className=''>seller: {seller}</div>
+                        <div className=''>  <Rating
+                            style={{ maxWidth: 90 }}
+                            value={ratings}
+                            readOnly
+                        /></div>
                     </div>
-                    {/* <div className="flex flex-col gap-2">
-                        <Link className='active:scale-90 duration-200 bg-gray-100 capitalize flex items-center gap-3 hover:bg-gray-200 justify-center p-1 rounded'>see more <BsFillArrowRightCircleFill /></Link>
-                        <div className='cursor-pointer bg-gray-100 capitalize flex items-center gap-3 hover:bg-gray-200 active:scale-90 duration-200 justify-center p-1 rounded'>
-                            Add to cart
-                            <BsFillCartFill />
-                        </div>
-                    </div> */}
+
+
+                    <div className='cursor-pointer capitalize hover:bg-green-900 hover:text-white active:scale-90 duration-200 font-semibold text-sm  px-3 py-1 border-2 border-green-900 rounded-full'>
+                        Add to cart
+                    </div>
+
                 </div>
             </div>
         </Link>
