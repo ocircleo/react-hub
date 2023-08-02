@@ -9,7 +9,7 @@ const Provider = ({ children }) => {
     const [refetch, setRefetch] = useState(false)
     const [loading, setLoading] = useState(true)
     const [shoeData, setShoeData] = useState([])
-
+    const [dropReset, setDropReset] = useState(true)
 
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const Provider = ({ children }) => {
 
 
     let ProviderData = {
-        user, setUser, loading, refetch, setRefetch, shoeData
+        user, setUser, loading, refetch, setRefetch, shoeData, dropReset, setDropReset
     }
     return (
         <contextProvier.Provider value={ProviderData}>

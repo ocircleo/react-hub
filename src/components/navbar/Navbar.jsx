@@ -5,15 +5,30 @@ import { BsFillCartFill, } from 'react-icons/bs';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { GrMenu } from 'react-icons/gr';
 import { RxCross2 } from 'react-icons/rx';
+import { RiArrowDropDownLine } from 'react-icons/ri';
 import { useContext, useEffect, useState } from "react";
 import NavActiveRoutes from "../activeroutes/NavActiveRoutes";
 import { contextProvier } from "../../private/provider/Provider";
+import Dropdown from "../navDropdown/Dropdown";
+import ProfileActiveRoute from "../activeroutes/ProfileActiveRoute";
 const Navbar = () => {
     const { user } = useContext(contextProvier)
     const [acount, setAcount] = useState(false)
     const [miniserch, setMiniserch] = useState(false)
     const [leftNav, setLeftNav] = useState(false)
+    const [dropdown, setDropdown] = useState(false)
     let loacal = localStorage.getItem('first-time')
+    window.addEventListener("click", e => {
+        let navClass = e.target.classList
+        let thisis;
+        for (let n of navClass) {
+            if (n == 'navtog') {
+                thisis = true;
+            }
+        }
+        if (thisis) return;
+        setDropdown(false)
+    })
     useEffect(() => {
         if (!loacal) {
             setTimeout(() => {
@@ -52,50 +67,67 @@ const Navbar = () => {
         <div className="overflow-x-hidden">
             {/* options and other nav options */}
             <div title="navbar options" className="flex justify-between items-center w-full h-12 border shadow fixed p-1 md:p-2 lg:p-4 xl:p-6 2xl:p-8 bg-white z-[111]">
-
                 <Link to={'/'}>
                     <div title="logo" className="h-10 w-[90px] lg:w-[100px] 2xl:w-[120px] bg-gray-300 rounded"></div>
 
                 </Link>
-                <div title="search bar for big screen" className="hidden md:block">
-                    <form className="flex gap-2">
-                        <select name="type" id="" className="border-2 rounded capitalize w-16 text-gray-500 text-sm font-semibold">
-                            <option value="mobile">mobile</option>
-                            <option value="mobile">laptop</option>
-                            <option value="mobile">Smart Phone</option>
-                        </select>
-                        <input type="search" placeholder="Search model" name="serch" className=" md:w-[355px] lg:w-[475px] xl:w-[600px] h-10 border-2 rounded p-2" />
-                        <button type="submit" className="h-10 border-2 rounded px-3 active:scale-90 duration-150"><FaMagnifyingGlass /></button>
-                    </form>
+                <div title="divider 1 " className="hidden lg:block">
+                    <ul className="flex gap-6 items-center capitalize font-semibold text-sm text-gray-700 ">
+                        <li className="relative translate-x-2 navtog" onClick={() => setDropdown(!dropdown)}>
+                            <span className="flex items-center navtog">container<RiArrowDropDownLine className="text-2xl translate-y-[.15rem]"></RiArrowDropDownLine></span>
+                            <div className={`flex items-center flex-col gap-2  justify-center w-28 bg-gray-400 right-0 absolute ${dropdown ? "visible" : "invisible"}`}>
+                                <li><Link>Deals</Link></li>
+                                <li><Link>What's new</Link></li>
+                                <li><Link>Delivery</Link></li>
+                            </div>
+                        </li>
+                        <li><Link>Deals</Link></li>
+                        <li><Link>What's new</Link></li>
+                        <li><Link>Delivery</Link></li>
+                    </ul>
                 </div>
-                <div title="acount" className="flex gap-2">
-                    <div className="md:hidden border rounded p-2 h-10 flex flex-col items-center justify-center active:scale-90 duration-150 -translate-x-1" onClick={toggleSerch}>
-                        {
-                            miniserch ? <RxCross2 className="text-lg sm:text-2xl" /> : <FaMagnifyingGlass className="text-lg sm:text-2xl" />
-                        }
-                    </div>
-                    <Link title="cart" className="flex flex-col items-center justify-center cursor-pointer active:scale-90 duration-150 -translate-x-1" to={'/acount/carts'}>
+                <div title="nav divider-2" className="flex justify-between items-center gap-5">
+                    <div title="search bar for big screen" className="hidden md:block">
+                        <form className="flex gap-2 relative">
+                            <input type="search" placeholder="Search model" name="serch" className=" md:w-[355px] lg:w-[475px]  h-10 border-2 rounded-full p-2" />
+                            <button>
+                                <FaMagnifyingGlass className="absolute right-5 top-[.7rem] text-lg"></FaMagnifyingGlass>
 
-                        <div className="relative">
-                            <p className="absolute -top-2 left-3 bg-indigo-200 h-4 w-5 rounded-full text-center text-[14px]">0</p>
-                            <BsFillCartFill className={`text-xl `}></BsFillCartFill>
+                            </button>
+                        </form>
+                    </div>
+                    <div title="mini serch and acount" className="flex gap-2">
+                        <div title="mini serch" className="md:hidden border rounded p-2 h-10 flex flex-col items-center justify-center active:scale-90 duration-150 -translate-x-1" onClick={toggleSerch}>
+                            {
+                                miniserch ? <RxCross2 className="text-lg sm:text-2xl" /> : <FaMagnifyingGlass className="text-lg sm:text-2xl" />
+                            }
                         </div>
+                        <div title="acount" className={` ${user ? 'p-0' : 'p-2'} h-10 flex flex-col items-center justify-center active:scale-90 duration-150`}>
+                            {
+                                user ? <Link to={'/acount/profile'} className="h-10 w-10 rounded-full sm:w-10 object-cover border-2 cursor-pointer"><img src="" className="w-10 h-10 bg-gray-300 rounded-full" alt="" /></Link> : <div onClick={toggleAcount} className="flex items-center gap-2"> <FaRegUserCircle className="text-lg sm:text-2xl cursor-pointer" ></FaRegUserCircle><p className="text-sm">Acount</p></div>
+                            }
+
+                        </div>
+                        <Link title="cart" className="flex flex-col items-center justify-center cursor-pointer active:scale-90 duration-150 -translate-x-1" to={'/acount/carts'}>
+
+                            <div className="relative flex gap-2" >
+                                <p className="absolute -top-2 left-3 bg-indigo-200 h-4 w-5 rounded-full text-center text-[14px]">0</p>
+                                <BsFillCartFill className={`text-xl `}></BsFillCartFill>
+                                <p>Cart</p>
+                            </div>
 
 
-                    </Link>
-                    <div className={` ${user ? 'p-0' : 'p-2'} h-10 flex flex-col items-center justify-center active:scale-90 duration-150`}>
-                        {
-                            user ? <Link to={'/acount/profile'} className="h-10 w-10 rounded-full sm:w-10 object-cover border-2 cursor-pointer"><img src="" className="w-10 h-10 bg-gray-300 rounded-full" alt="" /></Link> : <FaRegUserCircle className="text-lg sm:text-2xl cursor-pointer" onClick={toggleAcount}></FaRegUserCircle>
-                        }
+                        </Link>
 
-                    </div>
-                    <div className="border-2 rounded p-2 h-10 flex flex-col items-center justify-center active:scale-90 duration-150" onClick={toggleNav}>
-                        {
-                            leftNav ? <RxCross2 className="text-lg sm:text-2xl cursor-pointer" /> : <GrMenu className="text-lg sm:text-2xl cursor-pointer" />
-                        }
+                        <div className="border-2 rounded p-2 h-10 flex flex-col items-center justify-center active:scale-90 duration-150 lg:hidden" onClick={toggleNav}>
+                            {
+                                leftNav ? <RxCross2 className="text-lg sm:text-2xl cursor-pointer" /> : <GrMenu className="text-lg sm:text-2xl cursor-pointer" />
+                            }
 
+                        </div>
                     </div>
                 </div>
+
             </div >
             {/* serch for small screen */}
             <div title="serch bar for small screen" className={`z-10 h-32 duration-150 fixed ${miniserch ? 'top-12' : '-top-[5rem]'} w-full bg-white border shadow flex flex-col items-center md:hidden overflow-x-hidden`}>
@@ -106,11 +138,6 @@ const Navbar = () => {
                         <button type="submit" className="h-10 border-2 rounded px-3 active:scale-90 duration-150"><FaMagnifyingGlass /></button>
 
                     </div>
-                    <select name="type" id="" className="border-2  rounded capitalize w-full p-1">
-                        <option value="mobile">select Catagorty</option>
-                        <option value="mobile">laptop</option>
-                        <option value="mobile">Smart Phone</option>
-                    </select>
                 </form>
                 <div className="absolute -bottom-0 active:scale-90 duration-150 border-2 p-1 rounded " onClick={toggleSerch}>
                     <RxCross2 />
@@ -119,28 +146,22 @@ const Navbar = () => {
             {/* side bar */}
             <div title="side bar container " className={`fixed h-screen w-full md:w-[450px] duration-300 ${leftNav ? 'right-0' : ' -right-full'} bg-white flex flex-col  overflow-y-scroll  pt-14 2xl:pt-[5rem] pb-2 border-2 select-none z-[110]`}>
                 <div className="">
-                    <ul className="list-none text-center flex flex-col justify-stretch px-3 font-semibold gap-2">
-                        {
-                            links
-                        }
-                    </ul>
-                    <form className="px-3">
-                        <fieldset className="flex flex-col">
-                            <label htmlFor="catagory" className="font-semibold py-2 px-2 ">Select Catagory</label>
-                            <select className="border-2 rounded p-2">
-                                <option>SmartPhone</option>
-                                <option>Laptop</option>
-                                <option>Monitor</option>
-                                <option>pc parts</option>
-                                <option>Web cam</option>
-                                <option>Microphone</option>
-                            </select>
-                        </fieldset>
-                        <fieldset>
-                            <label htmlFor="price"></label>
+                    <ul className="text-center flex justify-stretch flex-col w-full px-3 font-semibold gap-2">
+                        <li className="relative navtog" onClick={() => setDropdown(!dropdown)}>
+                            <span className="flex items-center navtog justify-center text-black bg-gray-300 py-2 rounded text-center">container<RiArrowDropDownLine className="text-2xl translate-y-[.15rem]"></RiArrowDropDownLine></span>
+                            <div className={`flex items-stretch flex-col gap-2 justify-center w-full  right-0  ${dropdown ? "my-3" : "hidden"}`}>
+                                <NavActiveRoutes to={'/'} toggleNav={toggleNav}>lorm</NavActiveRoutes>
+                                <NavActiveRoutes to={'/d'} toggleNav={toggleNav}>ipsum</NavActiveRoutes>
+                                <NavActiveRoutes to={'/d'} toggleNav={toggleNav}>dolor sit amet</NavActiveRoutes>
 
-                        </fieldset>
-                    </form>
+                            </div>
+                        </li>
+                        <NavActiveRoutes to={'/'} toggleNav={toggleNav}>home</NavActiveRoutes>
+                        <NavActiveRoutes to={'/d'} toggleNav={toggleNav}>Deals</NavActiveRoutes>
+                        <NavActiveRoutes to={'/d'} toggleNav={toggleNav}>Deals</NavActiveRoutes>
+
+
+                    </ul>
                 </div>
             </div>
             {/* signup / login  */}

@@ -9,15 +9,15 @@ const MainCard = ({ data }) => {
     } = data
     return (
         <Link>
-            <div className="flex flex-col gap-2 w-60 h-80 relative flex-shrink-0 pb-2">
-                <figure className='h-44 bg-slate-100 w-full object-cover z-20 rounded-lg'><img src={img} alt="Shoes" className='h-44 w-full object-cover rounded' /></figure>
-                <div className="flex flex-col justify-between items-start w-full gap-1 p-2 h-36">
+            <div className="flex flex-col gap-2 w-60 h-[24rem] relative flex-shrink-0 pb-2">
+                <figure className='h-[14rem] bg-slate-100 w-full object-cover z-20 rounded-lg'><img src={img} alt="Shoes" className='h-[14rem] w-full object-cover rounded' /></figure>
+                <div className="flex flex-col justify-between items-start w-full gap-1 p-2 h-[10rem]">
                     <div className='w-full'>
                         <div className='flex justify-between items-center capitalize font-semibold text-sm px-1 w-full '>
                             <h3 title='product name' >{name.length > 25 ? name.slice(0, 18) + "..." : name}</h3>
                             <p title='price' className='text-center text-gray-600'>${price}</p>
                         </div>
-                        <div className=''>seller: {seller}</div>
+                        <div className=''>Seller: <span className='text-gray-500 font-semibold text-sm'>{seller}</span> </div>
                         <div className=''>  <Rating
                             style={{ maxWidth: 90 }}
                             value={ratings}
