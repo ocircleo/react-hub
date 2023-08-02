@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import { FaMagnifyingGlass, } from 'react-icons/fa6';
 import { BsFillCartFill, } from 'react-icons/bs';
 import { FaRegUserCircle } from 'react-icons/fa';
@@ -9,8 +8,6 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import { useContext, useEffect, useState } from "react";
 import NavActiveRoutes from "../activeroutes/NavActiveRoutes";
 import { contextProvier } from "../../private/provider/Provider";
-import Dropdown from "../navDropdown/Dropdown";
-import ProfileActiveRoute from "../activeroutes/ProfileActiveRoute";
 const Navbar = () => {
     const { user } = useContext(contextProvier)
     const [acount, setAcount] = useState(false)
@@ -56,13 +53,7 @@ const Navbar = () => {
         setLeftNav(false);
         setMiniserch(false)
     }
-    let links =
-        <>
-            <NavActiveRoutes to={'/'} toggleNav={toggleNav} className="bg-gray-100 py-2  rounded">Home</NavActiveRoutes>
-            <NavActiveRoutes to={'/about'} toggleNav={toggleNav} className="bg-gray-100 py-2  rounded">Trending</NavActiveRoutes>
-            <NavActiveRoutes to={'/contact'} toggleNav={toggleNav} className="bg-gray-100 py-2  rounded">Top List</NavActiveRoutes>
-            <NavActiveRoutes to={'/acount/profile'} toggleNav={toggleNav} className="bg-gray-100 py-2  rounded">Acount</NavActiveRoutes>
-        </>
+
     return (
         <div className="overflow-x-hidden">
             {/* options and other nav options */}
@@ -74,11 +65,11 @@ const Navbar = () => {
                 <div title="divider 1 " className="hidden lg:block">
                     <ul className="flex gap-6 items-center capitalize font-semibold text-sm text-gray-700 ">
                         <li className="relative translate-x-2 navtog" onClick={() => setDropdown(!dropdown)}>
-                            <span className="flex items-center navtog">container<RiArrowDropDownLine className="text-2xl translate-y-[.15rem]"></RiArrowDropDownLine></span>
-                            <div className={`flex items-center flex-col gap-2  justify-center w-28 bg-gray-400 right-0 absolute ${dropdown ? "visible" : "invisible"}`}>
-                                <li><Link>Deals</Link></li>
-                                <li><Link>What's new</Link></li>
-                                <li><Link>Delivery</Link></li>
+                            <span className="flex items-center navtog cursor-pointer select-none">container<RiArrowDropDownLine className="text-2xl translate-y-[.15rem]"></RiArrowDropDownLine></span>
+                            <div className={`flex items-center duration-100 flex-col border shadow rounded  justify-center w-32 bg-slate-200 right-0 absolute ${dropdown ? "visible translate-y-3" : "invisible translate-y-0"}`}>
+                                <Link className="bg-gray-50 w-full text-center hover:bg-slate-400 py-2">Deals</Link>
+                                <Link className="bg-gray-50 w-full text-center hover:bg-slate-400 py-2">What's new</Link>
+                                <Link className="bg-gray-50 w-full text-center hover:bg-slate-400 py-2">Delivery</Link>
                             </div>
                         </li>
                         <li><Link>Deals</Link></li>
@@ -97,14 +88,14 @@ const Navbar = () => {
                         </form>
                     </div>
                     <div title="mini serch and acount" className="flex gap-2">
-                        <div title="mini serch" className="md:hidden border rounded p-2 h-10 flex flex-col items-center justify-center active:scale-90 duration-150 -translate-x-1" onClick={toggleSerch}>
+                        <div title="mini serch" className="md:hidden border rounded p-2 h-10 flex flex-col items-center justify-center active:scale-90 duration-150 " onClick={toggleSerch}>
                             {
                                 miniserch ? <RxCross2 className="text-lg sm:text-2xl" /> : <FaMagnifyingGlass className="text-lg sm:text-2xl" />
                             }
                         </div>
                         <div title="acount" className={` ${user ? 'p-0' : 'p-2'} h-10 flex flex-col items-center justify-center active:scale-90 duration-150`}>
                             {
-                                user ? <Link to={'/acount/profile'} className="h-10 w-10 rounded-full sm:w-10 object-cover border-2 cursor-pointer"><img src="" className="w-10 h-10 bg-gray-300 rounded-full" alt="" /></Link> : <div onClick={toggleAcount} className="flex items-center gap-2"> <FaRegUserCircle className="text-lg sm:text-2xl cursor-pointer" ></FaRegUserCircle><p className="text-sm">Acount</p></div>
+                                user ? <Link to={'/acount/profile'} className="h-10 w-10 rounded-full sm:w-10 object-cover border-2 cursor-pointer"><img src="" className="w-10 h-10 bg-gray-300 rounded-full" alt="" /></Link> : <div onClick={toggleAcount} className="flex items-center gap-2"> <FaRegUserCircle className="text-lg sm:text-2xl cursor-pointer" ></FaRegUserCircle><p className="text-sm hidden sm:block">Acount</p></div>
                             }
 
                         </div>
@@ -113,7 +104,7 @@ const Navbar = () => {
                             <div className="relative flex gap-2" >
                                 <p className="absolute -top-2 left-3 bg-indigo-200 h-4 w-5 rounded-full text-center text-[14px]">0</p>
                                 <BsFillCartFill className={`text-xl `}></BsFillCartFill>
-                                <p>Cart</p>
+                                <p className="hidden sm:block">Cart</p>
                             </div>
 
 
@@ -130,7 +121,7 @@ const Navbar = () => {
 
             </div >
             {/* serch for small screen */}
-            <div title="serch bar for small screen" className={`z-10 h-32 duration-150 fixed ${miniserch ? 'top-12' : '-top-[5rem]'} w-full bg-white border shadow flex flex-col items-center md:hidden overflow-x-hidden`}>
+            <div title="serch bar for small screen" className={`z-10 h-20 duration-150 fixed ${miniserch ? 'top-12' : '-top-[5rem]'} w-full bg-white border shadow flex flex-col items-center md:hidden overflow-x-hidden`}>
                 <form className=" p-1 flex flex-col gap-2 w-full px-2 items-start
                 ">
                     <div className="flex gap-2 w-full  items-center">
