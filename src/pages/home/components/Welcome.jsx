@@ -3,7 +3,7 @@ import WelcomeCarsoule from '../../../components/welcome-carsoule/WelcomeCarsoul
 
 const Welcome = () => {
     return (
-        <div className=' bg-gray-50 h-44'>
+        <div className=' bg-gray-50 h-44 mb-12'>
                 <WelcomeCarsoule></WelcomeCarsoule>
         </div>
     );

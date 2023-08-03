@@ -62,7 +62,7 @@ const Navbar = () => {
                     <div title="logo" className="h-10 w-[90px] lg:w-[100px] 2xl:w-[120px] bg-gray-300 rounded"></div>
 
                 </Link>
-                <div title="divider 1 " className="hidden lg:block">
+                <div title="divider 1 " className="hidden xl:block">
                     <ul className="flex gap-6 items-center capitalize font-semibold text-sm text-gray-700 ">
                         <li className="relative translate-x-2 navtog" onClick={() => setDropdown(!dropdown)}>
                             <span className="flex items-center navtog cursor-pointer select-none">container<RiArrowDropDownLine className="text-2xl translate-y-[.15rem]"></RiArrowDropDownLine></span>
