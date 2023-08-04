@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="bg-gray-300 w-full mt-4 overflow-x-hidden">
             <div className="container gap-5 md:gap-0 mx-auto grid grid-cols-2 py-10 overflow-x-hidden">
                 <div className="col-span-2 md:col-span-1 flex justify-center items-center flex-col">
-                  
+
                     <h2 className="italic text-gray-700 text-sm">Md.salman Hossain</h2>
                     <h2 className="italic text-gray-700 text-sm">Dhaka, Bangladesh</h2>
                     <h2 className="italic text-gray-700 text-sm">Email: salmanhossain11222626@gmail.com</h2>
@@ -41,14 +41,14 @@ const Footer = () => {
                     <h1 className="italic text-gray-700 text-sm capitalize font-semibold" >importan links</h1>
                     <div className="flex gap-3">
                         <Link to={'/'} className="italic text-indigo-700 capitalize text-sm">home</Link>
-                        <Link to={'/'} className="italic text-indigo-700 capitalize text-sm">blog</Link>
-                        <Link to={'/'} className="italic text-indigo-700 capitalize text-sm">contact</Link>
+                        <Link to={'/acount/profile'} className="italic text-indigo-700 capitalize text-sm">profile</Link>
+                        <Link to={'/acount/carts'} className="italic text-indigo-700 capitalize text-sm">Cart</Link>
 
                     </div>
-                    <h1 className="italic pt-3 text-gray-700 text-sm capitalize font-semibold" >projects links</h1>
+                    <h1 className="italic pt-3 text-gray-700 text-sm capitalize font-semibold" >Devloper links</h1>
                     <div className="flex gap-3">
-                        <Link to={'/'} className="italic text-indigo-700 capitalize text-sm">Toy Stop</Link>
-                        <Link to={'/'} className="italic text-indigo-700 capitalize text-sm">Fluent verse</Link>
+                        <Link to={'https://portfollio-5f3bc.web.app/'} target="_blank" className="italic text-indigo-700 capitalize text-sm">Port follio</Link>
+                        <Link to={'https://assignment-11-1ffcf.web.app/'} target="_blank" className="italic text-indigo-700 capitalize text-sm">Ongoing project</Link>
 
 
                     </div>

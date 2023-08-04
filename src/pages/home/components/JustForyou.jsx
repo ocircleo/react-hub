@@ -33,6 +33,7 @@ const JustForyou = () => {
     const sortBtns = ["price", "category", "ratings", "shipping",]
     return (
         <>
+            {/* ==== filter btns ===== */}
             <div className='w-full gap-2 flex-wrap flex items-center justify-between'>
                 <div className='flex gap-2 flex-wrap'>
                     {
@@ -45,6 +46,7 @@ const JustForyou = () => {
                 <button className={`bg-gray-200 px-3 p-1 capitalize font-semibold text-sm pe-1 rounded-full flex items-center`}>Sort by<RiArrowDropDownLine className='text-xl translate-y-[.12rem]' /></button>
             </div>
             <h1 className="text-2xl font-semibold px-1  py-8">Products for you</h1>
+            {/* ===== main product card ====  */}
             <div className='flex flex-wrap gap-5 items-center justify-center w-full mx-auto min-h-[12rem]'>
                 {
                     loadingProduct ? <div className='w-full text-center'>Loading... <br />(please refersh if not loaded)</div> : <>
@@ -54,7 +56,7 @@ const JustForyou = () => {
                         }
                     </>
                 }
-
+                {/* ===== Pagination ===== */}
                 <div className="join gap-1 w-full justify-center">
 
                     {

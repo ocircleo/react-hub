@@ -1,0 +1,17 @@
+.carousel {
+    width: 100%;
+    max-height: 35rem; /* Set a default max-height for images */
+    height: 100%;
+  }
+  .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%; /* Ensure the slide takes the full height of the carousel */
+  }
+  
+  .slide img {
+    width: auto;
+    max-height: 100%; /* Images will adjust their height to fit within the slide */
+  }

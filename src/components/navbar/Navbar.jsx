@@ -110,7 +110,7 @@ const Navbar = () => {
 
                         </Link>
 
-                        <div className="border-2 rounded p-2 h-10 flex flex-col items-center justify-center active:scale-90 duration-150 lg:hidden" onClick={toggleNav}>
+                        <div className="border-2 rounded p-2 h-10 flex flex-col items-center justify-center active:scale-90 duration-150 xl:hidden" onClick={toggleNav}>
                             {
                                 leftNav ? <RxCross2 className="text-lg sm:text-2xl cursor-pointer" /> : <GrMenu className="text-lg sm:text-2xl cursor-pointer" />
                             }

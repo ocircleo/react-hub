@@ -70,10 +70,10 @@ const WelcomeCarsoule = () => {
    
 
       <swiper-container init="false" ref={trendingRef} >
-        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-1</div></swiper-slide>
-        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-2</div></swiper-slide>
-        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-3</div></swiper-slide>
-        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize'>slide-4</div></swiper-slide>
+        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize text-xl font-semibold'>first slide</div></swiper-slide>
+        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize text-xl font-semibold'>second slide</div></swiper-slide>
+        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize text-xl font-semibold'>third slide</div></swiper-slide>
+        <swiper-slide ><div className='h-52 w-full bg-gray-200 rounded flex items-center justify-center capitalize text-xl font-semibold'>fourth slid</div></swiper-slide>
    
       </swiper-container>
    

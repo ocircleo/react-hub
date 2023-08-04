@@ -2,15 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/home/Home";
 import Errorpge from "./Errorpge";
-import Contact from "./pages/contact/Contact";
-import About from "./pages/About/About";
-import OmniDetaill from "./components/omnidetaill/OmniDetaill";
 import Acount from "./pages/acount/Acount";
 import Profile from "./pages/acount/pages/Profile";
 import Cart from "./pages/acount/pages/Cart";
 import Settings from "./pages/acount/pages/Settings";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
+import DetaillCard from "./components/detaillCard/DetaillCard";
 
 const router = createBrowserRouter([
   {
@@ -22,14 +20,9 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       }, {
-        path: 'contact',
-        element: <Contact></Contact>
-      }, {
-        path: 'about',
-        element: <About></About>
-      }, {
         path: 'detaill/:id',
-        element: <OmniDetaill></OmniDetaill>
+        element: <DetaillCard></DetaillCard>,
+        loader: (req) => fetch(`https://reacthubbackend.vercel.app/product/${req.params.id}`)
       }, {
         path: 'login',
         element: <Login></Login>
