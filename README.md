@@ -1,5 +1,5 @@
 
-# Welcome to Fluent Verse
+# Welcome to React Hub
 
 Live website link : https://magnificent-brioche-b26b3b.netlify.app/
 
